@@ -1,18 +1,16 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import ApiFetch from './components/ApiFetch'
+import Navbar from './components/Navbar';
 
 function App() {
 
   const [fetchData, setFetchData] = useState([])
-  const ref = useRef()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(ref.current.value)
+  const handleSubmit = (keyword) => {
 
     // APIをたたく
-    const endpointURL = `http://127.0.0.1:8000/api/${ref.current.value}/`
+    const endpointURL = `http://127.0.0.1:8000/api/${keyword}/`
     fetch(endpointURL)
       .then((res) => {
         return res.json()
@@ -25,13 +23,9 @@ function App() {
 
   return (
     <div className="App">
-      <h2>EChub</h2>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" placeholder="商品を検索" ref={ref}/>
-      </form>
+      <Navbar handleSubmit={handleSubmit}/>
       <ApiFetch fetchData={fetchData}/>
     </div>
   );
 }
-
 export default App;
