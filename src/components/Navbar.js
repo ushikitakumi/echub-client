@@ -3,9 +3,11 @@ import SearchBar from './SearchBar';
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="navbar-brand" >EChub</div>
-      <SearchBar handleSubmit={props.handleSubmit}/>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className='container-fluid'>
+        <div className="navbar-brand">EChub</div>
+        <SearchBar handleSubmit={props.handleSubmit}/>
+      </div>
     </nav>
   );
 };

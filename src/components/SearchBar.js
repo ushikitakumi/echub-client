@@ -9,11 +9,11 @@ const SearchBar = ({ handleSubmit }) => {
   }
 
   return (
-    <form onSubmit={onSubmit} className="input-group col-xl-3 col-md-6 p-2">
-      <input type="text" placeholder="商品を検索" ref={ref} className="form-control"/>
-      <div className="input-group-append">
-        <button className="btn btn-outline-success" type="submit">検索</button>
-      </div>
+    <form onSubmit={onSubmit} className="form-inline w-75">
+        <div className='input-group'>
+            <input type="text" placeholder="商品を検索" ref={ref} className="form-control"/>
+            <button className="btn btn-success" type="submit">Search</button>
+        </div>
     </form>
   )
 }
