@@ -11,7 +11,7 @@ const ApiFetch = ({ fetchData }) => {
           </ImageWrapper>
           <Info>
             <Name>{data.name}</Name>
-            <Price>{data.price}</Price>
+            <Price>{data.price}円</Price>
           </Info>
         </Card>
       ))}
