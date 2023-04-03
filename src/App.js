@@ -6,9 +6,16 @@ import Navbar from './components/Navbar';
 function App() {
 
   const [fetchData, setFetchData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = (keyword) => {
-
+    
+    if (keyword.trim() === '') {
+      setFetchData([]);
+      return;
+    }
+    
+    setIsLoading(true)
     // APIをたたく
     const endpointURL = `http://127.0.0.1:8000/api/${keyword}/`
     fetch(endpointURL)
@@ -18,13 +25,14 @@ function App() {
       .then((data) => {
         console.log(data)
         setFetchData(data)
+        setIsLoading(false);
       })
   }
 
   return (
     <div className="App">
       <Navbar handleSubmit={handleSubmit}/>
-      <ApiFetch fetchData={fetchData}/>
+      <ApiFetch fetchData={fetchData} isLoading={isLoading}/>
     </div>
   );
 }

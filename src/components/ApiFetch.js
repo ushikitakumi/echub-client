@@ -1,20 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const ApiFetch = ({ fetchData }) => {
+const ApiFetch = ({ fetchData, isLoading }) => {
   return (
     <Container>
-      {fetchData.map((data) => (
-        <Card key={data.id}>
-          <ImageWrapper href={data.url} target="_blank" rel="noopener noreferrer">
-            <ImageContent src={data.image} alt="画像を表示できません" />
-          </ImageWrapper>
-          <Info>
-            <Name>{data.name}</Name>
-            <Price>{data.price}円</Price>
-          </Info>
-        </Card>
-      ))}
+      {isLoading ? (
+        <Loading>
+          <CircularProgress />
+        </Loading>
+      ) : fetchData.length === 0 ? (
+          <EmptyMessage>メルカリ・ヤフオク・ペイペイフリマ・ラクマの商品をまとめて検索できます</EmptyMessage>
+      ) : (
+        fetchData.map((data, index) => (
+          <Card key={index}>
+            <ImageWrapper href={data.url} target="_blank" rel="noopener noreferrer">
+              <SiteName>{data.site}</SiteName>
+              <ImageContent src={data.image} alt="画像を表示できません" />
+            </ImageWrapper>
+            <Info>
+              <Name>{data.name}</Name>
+              <Price>{data.price}円</Price>
+            </Info>
+          </Card>
+        ))
+      )}
     </Container>
   );
 };
@@ -86,4 +96,31 @@ const Price = styled.p`
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+`;
+
+const Loading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+`;
+
+const EmptyMessage = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+`;
+
+const SiteName = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 2px 4px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 1;
 `;
