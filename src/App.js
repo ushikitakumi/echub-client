@@ -17,7 +17,7 @@ function App() {
     
     setIsLoading(true)
     // APIをたたく
-    const endpointURL = `http://127.0.0.1:8000/api/${keyword}/`
+    const endpointURL = `http://52.198.129.234:8000//api/${keyword}/`
     fetch(endpointURL)
       .then((res) => {
         return res.json()
