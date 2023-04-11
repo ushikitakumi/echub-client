@@ -17,7 +17,7 @@ function App() {
     
     setIsLoading(true)
     // APIをたたく
-    const endpointURL = `http://52.198.129.234:8000//api/${keyword}/`
+    const endpointURL = `https://www.echub-api.xyz/api/${keyword}/`
     fetch(endpointURL)
       .then((res) => {
         return res.json()
