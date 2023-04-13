@@ -17,7 +17,7 @@ function App() {
     
     setIsLoading(true)
     // APIをたたく
-    const endpointURL = `https://localhost:8000/api/${keyword}`
+    const endpointURL = `https://localhost:443/api/${keyword}`
     fetch(endpointURL)
       .then((res) => {
         return res.json()
