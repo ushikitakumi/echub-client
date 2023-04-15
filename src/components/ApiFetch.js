@@ -10,7 +10,7 @@ const ApiFetch = ({ fetchData, isLoading }) => {
           <CircularProgress />
         </Loading>
       ) : fetchData.length === 0 ? (
-          <EmptyMessage>メルカリ・ヤフオク・ペイペイフリマの商品をまとめて検索できます</EmptyMessage>
+          <EmptyMessage>Please search for the product you want.</EmptyMessage>
       ) : (
         fetchData.map((data, index) => (
           <Card key={index}>
