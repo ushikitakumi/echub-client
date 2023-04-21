@@ -8,9 +8,10 @@ const ApiFetch = ({ fetchData, isLoading }) => {
       {isLoading ? (
         <Loading>
           <CircularProgress />
+          <Message>Please wait a moment.</Message>
         </Loading>
       ) : fetchData.length === 0 ? (
-          <EmptyMessage>Please search for the product you want.</EmptyMessage>
+          <Message>Please search for the product you want.</Message>
       ) : (
         fetchData.map((data, index) => (
           <Card key={index}>
@@ -100,13 +101,15 @@ const Price = styled.p`
 
 const Loading = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100px;
+  padding-top: 50px;
 `;
 
-const EmptyMessage = styled.div`
+const Message = styled.div`
   font-size: 24px;
   font-weight: bold;
   text-align: center;
